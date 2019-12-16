@@ -47,8 +47,8 @@ def player_move(players, deck, player_cards, p, dealer_up, player_bets, player_b
         players += [p%10 + split_flag*10] # add new player
         player_cards[p] = hit([hand[0]], deck)
         player_cards[p%10 + split_flag*10] = hit([hand[1]], deck)
-        player_bets[p%10 + split_flag*10] = player_bets[p%10]
-        player_bankrolls[p%10] -= player_bets[p%10]
+        #player_bets[p%10 + split_flag*10] = player_bets[p%10]
+        #player_bankrolls[p%10] -= player_bets[p%10]
         # restart play for new hand - recursion
         return player_move(players, deck, player_cards, p, dealer_up, player_bets, split_flag)
 
@@ -56,7 +56,7 @@ def player_move(players, deck, player_cards, p, dealer_up, player_bets, player_b
     # Double
     if move == 'double':
         player_bets[p] *= 2
-        player_bankrolls[p] -= player_bets[p]
+        #player_bankrolls[p] -= player_bets[p]
         hand = hit(hand, deck)
         print(hand)
         if evaluate_hand(hand)[0] > 21:
